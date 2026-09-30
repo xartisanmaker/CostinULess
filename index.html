@@ -1,1 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CostinULess, LLC | Firewood in Brooklyn, MS</title>
+  <meta name="description" content="Seasoned and green oak firewood in Brooklyn, Mississippi. Starting at $140 per half cord with free delivery within 30 miles.">
 
+  <!-- Fonts: a sturdy serif for headings, a clean sans for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Color palette (change these to re-theme the whole page) ===== */
+    :root {
+      --sawdust: #f7efe4;     /* page background, light and warm */
+      --pine: #ecd9bf;        /* light panels */
+      --oak: #c89a6a;         /* accent wood tone */
+      --walnut: #8b5e3c;      /* buttons, headings accent */
+      --bark: #4a3222;        /* dark text and header */
+      --char: #2e1f15;        /* darkest, footer */
+      --cream: #fffaf3;       /* cards */
+      --radius: 10px;
+      --max-width: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Source Sans 3", Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--bark);
+      background-color: var(--sawdust);
+    }
+
+    h1, h2, h3 {
+      font-family: "Bitter", Georgia, serif;
+      line-height: 1.2;
+      color: var(--bark);
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: var(--walnut); }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section { padding: 70px 0; }
+
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: #6b4f3a;
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary { background: var(--walnut); color: var(--cream); }
+    .btn-primary:hover { background: var(--bark); }
+
+    .btn-outline {
+      border: 2px solid var(--cream);
+      color: var(--cream);
+    }
+    .btn-outline:hover { background: rgba(255, 250, 243, 0.15); }
+
+    /* ===== Header ===== */
+    header {
+      background: var(--bark);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 4px solid var(--oak);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: "Bitter", serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--pine);
+      text-decoration: none;
+    }
+    .logo span { color: var(--oak); }
+
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a {
+      color: var(--pine);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--oak); }
+
+    /* ===== Hero ===== */
+    .hero {
+      /* Wood grain effect made with stacked gradients, no image needed */
+      background:
+        linear-gradient(rgba(46, 31, 21, 0.72), rgba(46, 31, 21, 0.72)),
+        repeating-linear-gradient(
+          90deg,
+          #8b5e3c 0px, #9c6b45 14px, #845736 22px, #a67650 40px, #8b5e3c 55px
+        );
+      color: var(--cream);
+      text-align: center;
+      padding: 110px 0 100px;
+    }
+
+    .hero h1 {
+      color: var(--cream);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: var(--pine);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .rating {
+      margin-top: 28px;
+      font-weight: 600;
+      color: var(--oak);
+    }
+
+    /* ===== Highlights bar ===== */
+    .highlights {
+      background: var(--pine);
+      padding: 30px 0;
+      border-bottom: 1px solid var(--oak);
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .highlight strong {
+      display: block;
+      font-family: "Bitter", serif;
+      font-size: 1.5rem;
+      color: var(--walnut);
+    }
+
+    /* ===== Products ===== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--pine);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(74, 50, 34, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .card-body { padding: 20px; flex: 1; }
+    .card-body h3 { margin-bottom: 8px; font-size: 1.25rem; }
+
+    .price {
+      margin-top: 12px;
+      font-weight: 600;
+      color: var(--walnut);
+    }
+
+    /* ===== Delivery ===== */
+    .delivery { background: var(--pine); }
+
+    .delivery-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .delivery-inner img { border-radius: var(--radius); }
+
+    .delivery h2 { font-size: 2rem; margin-bottom: 14px; }
+    .delivery ul { margin: 16px 0 24px 20px; }
+    .delivery li { margin-bottom: 6px; }
+
+    /* ===== Reviews ===== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .review {
+      background: var(--cream);
+      border-left: 5px solid var(--oak);
+      border-radius: var(--radius);
+      padding: 24px;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .stars { color: #c7892b; font-style: normal; margin-bottom: 8px; letter-spacing: 2px; }
+
+    .review-source {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    /* ===== Contact ===== */
+    .contact { background: var(--bark); color: var(--pine); }
+    .contact .section-title { color: var(--cream); }
+    .contact .section-subtitle { color: var(--pine); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+
+    .contact-item {
+      background: rgba(255, 250, 243, 0.06);
+      border: 1px solid rgba(200, 154, 106, 0.4);
+      border-radius: var(--radius);
+      padding: 26px 20px;
+    }
+
+    .contact-item h3 { color: var(--oak); margin-bottom: 8px; }
+    .contact-item a { color: var(--cream); }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--char);
+      color: var(--oak);
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.95rem;
+    }
+
+    /* ===== Phone layout ===== */
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .delivery-inner { grid-template-columns: 1fr; }
+      section { padding: 50px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo">CostinU<span>Less</span>, LLC</a>
+      <ul class="nav-links">
+        <li><a href="#products">Firewood</a></li>
+        <li><a href="#delivery">Delivery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:+16015439999" class="btn btn-primary">Call Now</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container">
+      <h1>Quality Oak Firewood in Brooklyn, MS</h1>
+      <p>Seasoned or green oak, split and ready. Fair prices, prompt service, and free delivery to your door within 30 miles.</p>
+      <div class="hero-buttons">
+        <a href="tel:+16015439999" class="btn btn-primary">Call (601) 543-9999</a>
+        <a href="sms:+16015439999" class="btn btn-outline">Text for Fire Deals</a>
+      </div>
+      <p class="rating">Rated 4.6 out of 5 from 8 Google reviews</p>
+    </div>
+  </section>
+
+  <!-- ===== Highlights ===== -->
+  <div class="highlights">
+    <div class="container highlights-grid">
+      <div class="highlight"><strong>$140</strong>Starting price per 1/2 cord</div>
+      <div class="highlight"><strong>Free Delivery</strong>Within 30 miles</div>
+      <div class="highlight"><strong>Open 24 Hours</strong>Call or text anytime</div>
+    </div>
+  </div>
+
+  <!-- ===== Products ===== -->
+  <section id="products">
+    <div class="container">
+      <h2 class="section-title">What We Offer</h2>
+      <p class="section-subtitle">Local oak cut and stacked right here in Brooklyn, Mississippi.</p>
+
+      <div class="products-grid">
+        <!-- Replace each placeholder image src with a real photo, e.g. images/seasoned-oak.jpg -->
+        <div class="card">
+          <img src="https://placehold.co/600x400/8b5e3c/f7efe4?text=Seasoned+Oak+Firewood" alt="Stack of seasoned oak firewood">
+          <div class="card-body">
+            <h3>Seasoned Oak</h3>
+            <p>Dried and ready to burn. Lights easy, burns hot, and puts out less smoke.</p>
+            <p class="price">From $140 per 1/2 cord</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://placehold.co/600x400/6f7a45/f7efe4?text=Green+Oak+Firewood" alt="Freshly split green oak firewood">
+          <div class="card-body">
+            <h3>Green Oak</h3>
+            <p>Freshly split oak. A budget friendly choice if you plan to stack it and let it season.</p>
+            <p class="price">From $140 per 1/2 cord</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://placehold.co/600x400/4a3222/ecd9bf?text=Firewood+Racks" alt="Metal firewood rack holding split logs">
+          <div class="card-body">
+            <h3>Firewood Racks</h3>
+            <p>Keep your wood off the ground and dry. Ask about racks when you place your order.</p>
+            <p class="price">Call for pricing</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://placehold.co/600x400/a0522d/f7efe4?text=Smoking+and+Cooking+Wood" alt="Split hardwood for smoking and cooking food">
+          <div class="card-body">
+            <h3>Cooking and Smoking Wood</h3>
+            <p>Clean hardwood for smokers, grills, and pits. Great flavor for brisket, ribs, and more.</p>
+            <p class="price">Call for pricing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Delivery ===== -->
+  <section id="delivery" class="delivery">
+    <div class="container delivery-inner">
+      <img src="https://placehold.co/600x420/c89a6a/2e1f15?text=Firewood+Delivery" alt="Truck bed loaded with firewood for delivery">
+      <div>
+        <h2>Delivered to Your Door</h2>
+        <p>No truck? No problem. We bring the wood to you.</p>
+        <ul>
+          <li>Free delivery within 30 miles of Brooklyn, MS</li>
+          <li>Seasoned or green oak available</li>
+          <li>Quick response to calls and texts</li>
+        </ul>
+        <a href="sms:+16015439999" class="btn btn-primary">Text to Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reviews ===== -->
+  <section id="reviews">
+    <div class="container">
+      <h2 class="section-title">What Customers Say</h2>
+      <p class="section-subtitle">4.6 stars from 8 reviews on Google</p>
+
+      <div class="reviews-grid">
+        <div class="review">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          "Seasoned firewood, great price, great service, great guy!"
+        </div>
+        <div class="review">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          "Beautiful firewood delivered to my door!!"
+        </div>
+        <div class="review">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          "Prompt response as well."
+        </div>
+      </div>
+
+      <p class="review-source">
+        <a href="https://www.google.com/search?q=CostinULess+LLC+Brooklyn+MS" target="_blank" rel="noopener">Read all reviews on Google</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get Your Firewood</h2>
+      <p class="section-subtitle">Call or text to check out current fire deals.</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>Phone</h3>
+          <a href="tel:+16015439999">(601) 543-9999</a>
+        </div>
+        <div class="contact-item">
+          <h3>Address</h3>
+          <a href="https://www.google.com/maps/search/?api=1&query=82+Rockhill+to+Brooklyn+Rd+Brooklyn+MS+39425" target="_blank" rel="noopener">
+            82 Rockhill to Brooklyn Rd<br>Brooklyn, MS 39425
+          </a>
+        </div>
+        <div class="contact-item">
+          <h3>Hours</h3>
+          <p>Open 24 hours</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>&copy; <span id="year"></span> CostinULess, LLC. Firewood supplier in Brooklyn, Mississippi.</p>
+  </footer>
+
+  <script>
+    // Keeps the copyright year current automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
