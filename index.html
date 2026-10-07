@@ -185,11 +185,16 @@
       color: var(--walnut);
     }
 
+    .highlight a { color: inherit; text-decoration: none; }
+
     /* ===== Products ===== */
+    /* Only two photo cards now, so the grid is kept narrower and centered */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 24px;
+      max-width: 820px;
+      margin: 0 auto;
     }
 
     .card {
@@ -204,25 +209,65 @@
 
     .card img {
       width: 100%;
-      height: 190px;
+      height: 220px;
       object-fit: cover;
     }
 
-    .card-body { padding: 20px; flex: 1; }
+    .card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
     .card-body h3 { margin-bottom: 8px; font-size: 1.25rem; }
+    .card-body p { margin-bottom: 14px; }
 
     /* "Call for Pricing" button inside each product card */
     .btn-small {
-      margin-top: 14px;
       padding: 10px 18px;
       font-size: 0.95rem;
     }
-
-    .card-body { display: flex; flex-direction: column; }
     .card-body .btn-small { margin-top: auto; align-self: flex-start; }
-    .card-body p { margin-bottom: 14px; }
 
-    .highlight a { color: inherit; text-decoration: none; }
+    /* ===== Also Available list (no photos needed) ===== */
+    .also-available {
+      max-width: 820px;
+      margin: 40px auto 0;
+      background: var(--cream);
+      border: 1px solid var(--pine);
+      border-top: 5px solid var(--oak);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 4px 14px rgba(74, 50, 34, 0.08);
+    }
+
+    .also-available h3 {
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .also-list { list-style: none; }
+
+    .also-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px dashed var(--oak);
+    }
+    .also-list li:last-child { border-bottom: none; }
+
+    .also-list strong {
+      display: block;
+      font-family: "Bitter", serif;
+      font-size: 1.15rem;
+      color: var(--walnut);
+    }
+
+    .also-list span { color: #6b4f3a; }
+
+    .also-list .btn-small { flex-shrink: 0; }
 
     /* ===== Video ===== */
     .video-wrap {
@@ -319,6 +364,10 @@
       .nav-links { display: none; }
       .delivery-inner { grid-template-columns: 1fr; }
       section { padding: 50px 0; }
+
+      /* Stack the Also Available rows so the button sits under the text */
+      .also-list li { flex-direction: column; align-items: flex-start; }
+      .also-available { padding: 22px; }
     }
   </style>
 </head>
@@ -366,22 +415,13 @@
       <h2 class="section-title">What We Offer</h2>
       <p class="section-subtitle">Local oak cut and stacked right here in Brooklyn, Mississippi.</p>
 
+      <!-- Photo cards: only items that have real photos -->
       <div class="products-grid">
-        <!-- Green Oak and Smoking Wood still use placeholders. Swap the src when you get photos. -->
         <div class="card">
           <img src="https://i.postimg.cc/k40n5LFL/wood1.jpg" alt="Split oak firewood">
           <div class="card-body">
             <h3>Seasoned Oak</h3>
             <p>Dried and ready to burn. Lights easy, burns hot, and puts out less smoke.</p>
-            <a href="tel:+16015439999" class="btn btn-primary btn-small">Call for Pricing</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://placehold.co/600x400/6f7a45/f7efe4?text=Green+Oak+Firewood" alt="Freshly split green oak firewood">
-          <div class="card-body">
-            <h3>Green Oak</h3>
-            <p>Freshly split oak. A budget friendly choice if you plan to stack it and let it season.</p>
             <a href="tel:+16015439999" class="btn btn-primary btn-small">Call for Pricing</a>
           </div>
         </div>
@@ -394,15 +434,28 @@
             <a href="tel:+16015439999" class="btn btn-primary btn-small">Call for Pricing</a>
           </div>
         </div>
+      </div>
 
-        <div class="card">
-          <img src="https://placehold.co/600x400/a0522d/f7efe4?text=Smoking+and+Cooking+Wood" alt="Split hardwood for smoking and cooking food">
-          <div class="card-body">
-            <h3>Cooking and Smoking Wood</h3>
-            <p>Clean hardwood for smokers, grills, and pits. Great flavor for brisket, ribs, and more.</p>
+      <!-- Text-only list: items without photos.
+           If you get photos later, you can move one back up into a card. -->
+      <div class="also-available">
+        <h3>Also Available</h3>
+        <ul class="also-list">
+          <li>
+            <div>
+              <strong>Green Oak</strong>
+              <span>Freshly split oak. A budget friendly choice if you plan to stack it and let it season.</span>
+            </div>
             <a href="tel:+16015439999" class="btn btn-primary btn-small">Call for Pricing</a>
-          </div>
-        </div>
+          </li>
+          <li>
+            <div>
+              <strong>Cooking and Smoking Wood</strong>
+              <span>Clean hardwood for smokers, grills, and pits. Great flavor for brisket, ribs, and more.</span>
+            </div>
+            <a href="tel:+16015439999" class="btn btn-primary btn-small">Call for Pricing</a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
